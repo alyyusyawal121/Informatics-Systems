@@ -82,7 +82,7 @@ User dapat melihat:
 
 Clone Repository
 ```bash
-git clone <repo-url>
+git clone https://github.com/alyyusyawal121/Informatics-Systems.git
 cd project-folder
 
 python -m venv venv
