@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}Data Preprocessed - {{ file.filename }}{% endblock %}
+{% block content %}
+
+<h3 class="mb-3">Hasil Preprocessing: {{ file.filename }}</h3>
+
+<a href="{{ url_for('dashboard') }}" class="btn btn-secondary mb-3">← Kembali ke Dashboard</a>
+
+{% if df_pre is none %}
+  <div class="alert alert-info">Tidak ada data preprocessing untuk ditampilkan.</div>
+{% else %}
+
+<div class="table-responsive">
+  <table class="table table-bordered table-striped">
+    <thead class="table-dark">
+      <tr>
+        {% for col in df_pre.columns %}
+        <th>{{ col }}</th>
+        {% endfor %}
+      </tr>
+    </thead>
+    <tbody>
+      {% for index, row in df_pre.iterrows() %}
+      <tr>
+        {% for value in row %}
+        <td>{{ value }}</td>
+        {% endfor %}
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+{% endif %}
+
+{% endblock %}
